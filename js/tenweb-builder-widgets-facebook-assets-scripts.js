@@ -1,0 +1,5 @@
+jQuery(window).on('elementor/frontend/init',function(){var config=TWBBFrontendConfig.facebook_sdk;loadSDK=function loadSDK(){if(config.isLoading||config.isLoaded){return;}
+config.isLoading=true;jQuery.ajax({url:'https://connect.facebook.net/'+config.lang+'/sdk.js',dataType:'script',cache:true,success:function success(){FB.init({appId:config.app_id,version:'v2.10',xfbml:false});config.isLoaded=true;config.isLoading=false;jQuery(document).trigger('fb:sdk:loaded');}});};elementorFrontend.hooks.addAction('frontend/element_ready/twbb_facebook-page.default',function($scope){loadSDK();var parse=function parse(){FB.XFBML.parse($scope[0]);};if(config.isLoaded){parse();}
+else{jQuery(document).on('fb:sdk:loaded',parse);}});elementorFrontend.hooks.addAction('frontend/element_ready/twbb_facebook-comments.default',function($scope){loadSDK();var parse=function parse(){FB.XFBML.parse($scope[0]);};if(config.isLoaded){parse();}
+else{jQuery(document).on('fb:sdk:loaded',parse);}});});
+/*This file was exported by "Export WP Page to Static HTML" plugin which created by ReCorp (https://myrecorp.com) */
